@@ -9,7 +9,10 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 :x: - deprecation/removal
 :pencil: - chore
 :microscope: - experimental
- 
+
+## [0.1.1]
+- :beetle: fix wrong import
+
 ## [0.1.0]
 - :rocket: initial implementation
 
