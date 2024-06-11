@@ -1,6 +1,6 @@
 {
   "name": "@qavajs/cypress",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "qavajs compatible framework on cypress runner",
   "main": "",
   "scripts": {
