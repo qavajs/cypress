@@ -18,8 +18,5 @@
     "@qavajs/memory": "^1.7.0",
     "@qavajs/po-cypress": "^0.2.0",
     "cypress": "^13.11.0"
-  },
-  "dependencies": {
-    "@qavajs/validation": "^0.8.0"
   }
 }
