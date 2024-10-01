@@ -10,6 +10,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 :pencil: - chore
 :microscope: - experimental
 
+## [0.2.0]
+- :rocket: added memory write logs support
+
 ## [0.1.1]
 - :beetle: fix wrong import
 
