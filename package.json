@@ -1,7 +1,7 @@
 {
   "name": "@qavajs/cypress",
-  "version": "0.2.0",
-  "description": "qavajs compatible framework on cypress runner",
+  "version": "2.0.0",
+  "description": "qavajs for cypress runner",
   "main": "",
   "scripts": {
     "debug": "cypress open --config-file test-e2e/cypress.config.js",
@@ -15,8 +15,7 @@
   "license": "MIT",
   "devDependencies": {
     "@qavajs/cypress-runner-adapter": "^0.2.0",
-    "@qavajs/memory": "^1.9.0",
-    "@qavajs/po-cypress": "^0.2.0",
-    "cypress": "^13.15.0"
+    "@qavajs/memory": "^1.10.2",
+    "cypress": "^13.15.1"
   }
 }

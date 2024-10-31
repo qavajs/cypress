@@ -5,7 +5,7 @@ import App from '../page_object/';
 import Memory from '../memory';
 
 defineQavajs({
-    pageObject: new App(),
+    pageObject: App,
     memory: new Memory()
 });
 
