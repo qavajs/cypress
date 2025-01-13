@@ -26,6 +26,7 @@ export default class App {
     DetachElement = locator('#detach');
     VisibleElement = locator('#visible');
     HiddenElement = locator('#hidden');
+    PresentCollection = locator('#present');
 
     Loading = locator('#loading');
     LoadingInput = locator('#loadingInput');

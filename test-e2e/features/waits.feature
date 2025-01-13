@@ -66,3 +66,10 @@ Feature: waits
 
   Scenario: wait for title
     Then I expect page title to be equal 'title changed'
+
+  Scenario Outline: collection condition
+    Then I expect every element in '<collection>' collection <condition>
+
+    Examples:
+      | collection         | condition     |
+      | Present Collection | to be present |

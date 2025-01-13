@@ -7,35 +7,29 @@ export default class Memory {
     storagePage = './test-e2e/apps/storage.html';
     dragDropPage = './test-e2e/apps/dragdrop.html';
     scrollPage = './test-e2e/apps/scroll.html';
-
     array = (...args) => args;
-
-    // @ts-ignore
     setInputValue = function() { return this.document.querySelector('#input').value = 'some value' };
-
-    // @ts-ignore
     getActionInnerText = function() { return this.document.querySelector("#action").innerText };
-
-    // @ts-ignore
     clickJS = target => target.click();
-
-    // @ts-ignore
     getInnerText = target => target.innerText;
-
     userFromMemory = 'Mock 3';
-
     users = JSON.stringify([
         {"name": "Memory Mock 1"},
         {"name": "Memory Mock 2"},
         {"name": "Memory Mock 3"}
     ]);
-
     button2 = 'Button2';
-
     userInterceptionMatcher = {
         method: 'GET',
         url: '**/users'
     };
-
     uploadFile = 'test-e2e/apps/actions.html';
+    getComputedString = function () {
+        return 'I was computed';
+    };
+    multilineMemoryValue = `Carriage\nreturn`;
+    arr = [1, 2, 3, 4, 5];
+    reverseArr = [5, 4, 3, 2, 1];
+    ascending = (a, b) => a - b;
+    descending = (a, b) => b - a;
 }
