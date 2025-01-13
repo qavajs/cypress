@@ -1,58 +1,52 @@
-import { $, $$, Component } from '@qavajs/po-cypress';
+import { locator } from '../../lib/pageObjects';
+
 export default class App {
-    SimpleTextElement = $('#textValue');
-    SimpleTextListItems = $$('#textValueList li');
-    SimpleTextInput = $('#textInput');
-    FileInput = $('#fileInput');
-    Action = $('#action');
-    AlertButton = $('#confirm');
-    PromptButton = $('#prompt');
-    Button = $('#button');
-    ButtonHover = $('#buttonHover');
-    Input = $('#input');
-    Select = $('#select');
-    Buttons = $$('.button');
-    IFrame = $('iframe#firstIframe');
-    InnerIFrame = $('iframe#innerIframe');
-    FrameElement = $('#frameElement');
-    InnerFrameElement = $('#innerFrameElement');
-    NewTabLink = $('#newTabLink');
-    EnabledButton = $('#enabledButton');
-    DisabledButton = $('#disabledButton');
-    PresentElement = $('#present');
-    DetachElement = $('#detach');
-    VisibleElement = $('#visible');
-    HiddenElement = $('#hidden');
+    SimpleTextElement = locator('#textValue');
+    SimpleTextListItems = locator('#textValueList li');
+    SimpleTextListItemByIndex = locator.template(idx => `#textValueList li:nth-child(${idx})`);
+    SimpleTextListItemByText = locator.native(({ cy, argument }) => cy.get(`#textValueList li`).filter(`:contains("${argument}")`));
+    SimpleTextInput = locator('#textInput');
+    FileInput = locator('#fileInput');
+    Action = locator('#action');
+    AlertButton = locator('#confirm');
+    PromptButton = locator('#prompt');
+    Button = locator('#button');
+    ButtonHover = locator('#buttonHover');
+    Input = locator('#input');
+    Select = locator('#select');
+    Buttons = locator('.button');
+    IFrame = locator('iframe#firstIframe');
+    InnerIFrame = locator('iframe#innerIframe');
+    FrameElement = locator('#frameElement');
+    InnerFrameElement = locator('#innerFrameElement');
+    NewTabLink = locator('#newTabLink');
+    EnabledButton = locator('#enabledButton');
+    DisabledButton = locator('#disabledButton');
+    PresentElement = locator('#present');
+    DetachElement = locator('#detach');
+    VisibleElement = locator('#visible');
+    HiddenElement = locator('#hidden');
+    PresentCollection = locator('#present');
 
-    Loading = $('#loading');
-    LoadingInput = $('#loadingInput');
-    WaitCollection = $$('#waitCollection > div');
-    PressCounter = $('#pressCounter');
+    Loading = locator('#loading');
+    LoadingInput = locator('#loadingInput');
+    WaitCollection = locator('#waitCollection > div');
+    PressCounter = locator('#pressCounter');
 
-    Users = $$('#users > li');
-    OverflowContainer = $('#overflowContainer');
+    Users = locator('#users > li');
+    OverflowContainer = locator('#overflowContainer');
 
-    IgnoreHierarchyComponent = $(new IgnoreHierarchyComponent('#ignoreHierarchyComponent'));
-    ComponentWithoutSelector = $(new ComponentWithoutSelector());
-    KeyDump = $('#keywordevent');
+    KeyDump = locator('#keywordevent');
 
-    Cookie = $('#cookie');
-    LocalStorage = $('#localStorage');
-    SessionStorage = $('#sessionStorage');
+    Cookie = locator('#cookie');
+    LocalStorage = locator('#localStorage');
+    SessionStorage = locator('#sessionStorage');
 
-    DropZone = $('div#div1');
-    DragElement = $('div#drag1');
-    DragElementInDropZone = $('div#div1 div#drag1');
+    DropZone = locator('div#div1');
+    DragElement = locator('div#drag1');
+    DragElementInDropZone = locator('div#div1 div#drag1');
 
-    EventHandler = $('#mouseEvent');
-    KeyboardEventHandler = $('#keyboardEvent');
-    ScrollElement = $('#scrollElement');
-}
-
-class IgnoreHierarchyComponent extends Component {
-    Input = $('#input', { ignoreHierarchy: true });
-}
-
-class ComponentWithoutSelector {
-    Input = $('#input');
+    EventHandler = locator('#mouseEvent');
+    KeyboardEventHandler = locator('#keyboardEvent');
+    ScrollElement = locator('#scrollElement');
 }

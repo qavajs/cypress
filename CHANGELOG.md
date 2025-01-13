@@ -10,6 +10,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 :pencil: - chore
 :microscope: - experimental
 
+## [2.0.0]
+- :rocket: implemented new page object approach
+
 ## [0.2.0]
 - :rocket: added memory write logs support
 
