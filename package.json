@@ -2,7 +2,7 @@
   "name": "@qavajs/cypress",
   "version": "2.0.1",
   "description": "qavajs for cypress runner",
-  "main": "",
+  "main": "index.js",
   "scripts": {
     "debug": "cypress open --config-file test-e2e/cypress.config.js",
     "test": "cypress run --config-file test-e2e/cypress.config.js"

@@ -1,4 +1,4 @@
-import { locator } from '../../lib/pageObjects';
+import { locator } from '../../po.js';
 
 export default class App {
     SimpleTextElement = locator('#textValue');
