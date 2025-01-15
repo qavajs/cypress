@@ -10,6 +10,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 :pencil: - chore
 :microscope: - experimental
 
+## [2.0.2]
+- :beetle: added export of page object `locator` function
+
 ## [2.0.1]
 - :beetle: fixed issue with getting child element
 
