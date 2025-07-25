@@ -3,7 +3,9 @@ qavajs implementation for cypress runner
 
 ## Installation
 
-`npm install @qavajs/cypress @qavajs/cypress-runner-adapter @qavajs/memory`
+```
+npm install @qavajs/cypress @qavajs/cypress-runner-adapter @qavajs/memory
+```
 
 ## Configuration
 cypress.config.js
@@ -21,7 +23,7 @@ module.exports = defineConfig({
 });
 
 ```
-support file
+support file defines steps and loads qavajs entities (memory and page object)
 ```typescript
 import defineQavajs from '@qavajs/cypress/defineQavajs';
 import '@qavajs/cypress';
@@ -39,11 +41,17 @@ defineQavajs({
 
 ## Development and testing
 Install dependencies
-`npm install`
+```
+npm install
+```
 
 
 Execute tests
-`npm run test`
+```
+npm run test
+```
 
 Debug tests
-`npm run debug`
+```
+npm run debug
+```
