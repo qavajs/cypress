@@ -10,6 +10,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 :pencil: - chore
 :microscope: - experimental
 
+## [2.1.0]
+- :rocket: added page object logging
+
 ## [2.0.2]
 - :beetle: added export of page object `locator` function
 
