@@ -3,7 +3,7 @@ qavajs implementation for cypress runner
 
 ## Installation
 
-```
+```bash
 npm install @qavajs/cypress @qavajs/cypress-runner-adapter @qavajs/memory
 ```
 
@@ -44,7 +44,6 @@ Install dependencies
 ```
 npm install
 ```
-
 
 Execute tests
 ```

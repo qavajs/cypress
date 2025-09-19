@@ -10,6 +10,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 :pencil: - chore
 :microscope: - experimental
 
+## [Unreleased]
+- :rocket: added `into` preposition to type and type chars steps
+
 ## [2.2.0]
 - :rocket: added `to satisfy` validation to verify user-defined expectation provided as predicate
 ```Gherkin
