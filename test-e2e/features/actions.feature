@@ -19,9 +19,14 @@ Feature: actions
     When I double click 'Button'
     Then I expect text of 'Action' to be equal 'dblclick'
 
-  Scenario: type
-    When I type 'test value' to 'Input'
+  Scenario Outline: type (<word>)
+    When I type 'test value' <word> 'Input'
     Then I expect text of 'Action' to be equal 'test value'
+
+    Examples:
+      | word |
+      | to   |
+      | into |
 
   Scenario: clear
     When I type 'test value' to 'Input'
