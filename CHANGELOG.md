@@ -10,6 +10,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 :pencil: - chore
 :microscope: - experimental
 
+## [2.3.1]
+- :x: removed alias assignment in page object
+
 ## [2.3.0]
 - :rocket: added `into` preposition to type and type chars steps
 - :x: removed iframe steps
