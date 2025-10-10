@@ -17,4 +17,9 @@ jobs:
         with:
           node-version: ${{ matrix.version }}
       - run: npm ci
-      - run: npm run test
+      - name: mode describe
+        run: npm run test
+      - name: mode it
+        run: npm run test
+        env:
+          MODE: it

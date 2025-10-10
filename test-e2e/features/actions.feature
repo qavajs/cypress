@@ -42,52 +42,6 @@ Feature: actions
       | Button2  |
       | $button2 |
 
-  Scenario: switch to frame
-    When I expect 'Button' to be visible
-    When I switch to 1 frame
-    When I expect 'Frame Element' to be visible
-    When I switch to parent frame
-    When I expect 'Button' to be visible
-
-  Scenario: switch to page object frame
-    When I expect 'Button' to be visible
-    When I switch to 'IFrame' frame
-    When I expect 'Frame Element' to be visible
-    When I switch to parent frame
-    When I expect 'Button' to be visible
-
-  Scenario: switch to frame in frame
-    When I expect 'Button' to be visible
-    When I switch to 1 frame
-    When I expect 'Frame Element' to be visible
-    When I switch to parent frame
-    When I expect 'Button' to be visible
-
-  Scenario: switch to page object frame
-    When I expect 'Button' to be visible
-    When I switch to 'IFrame' frame
-    When I expect 'Frame Element' to be visible
-    When I switch to parent frame
-    When I expect 'Button' to be visible
-
-  Scenario: switch to frame in frame
-    When I expect 'Button' to be visible
-    When I switch to 1 frame
-#    When I expect 'Frame Element' to be visible
-    When I switch to 1 frame
-    When I expect 'Inner Frame Element' to be visible
-    When I switch to parent frame
-    When I expect 'Button' to be visible
-
-  Scenario: switch to frame in frame using page object
-    When I expect 'Button' to be visible
-    When I switch to 'IFrame' frame
-#    When I expect 'Frame Element' to be visible
-    When I switch to 'Inner IFrame' frame
-    When I expect 'Inner Frame Element' to be visible
-    When I switch to parent frame
-    When I expect 'Button' to be visible
-
   Scenario: refresh page
     When I type 'test value' to 'Input'
     Then I expect text of 'Action' to be equal 'test value'

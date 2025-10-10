@@ -10,8 +10,11 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 :pencil: - chore
 :microscope: - experimental
 
-## [Unreleased]
+## [2.3.0]
 - :rocket: added `into` preposition to type and type chars steps
+- :x: removed iframe steps
+- :beetle: - fixed alert steps
+- :beetle: - fixed desynchronization in validation steps 
 
 ## [2.2.0]
 - :rocket: added `to satisfy` validation to verify user-defined expectation provided as predicate

@@ -1,6 +1,6 @@
 {
   "name": "@qavajs/cypress",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "qavajs for cypress runner",
   "main": "index.js",
   "scripts": {
@@ -19,8 +19,8 @@
   "author": "Alexandr Galichenko",
   "license": "MIT",
   "devDependencies": {
-    "@qavajs/cypress-runner-adapter": "^1.1.0",
+    "@qavajs/cypress-runner-adapter": "^1.3.0",
     "@qavajs/memory": "^1.10.2",
-    "cypress": "^15.2.0"
+    "cypress": "^15.3.0"
   }
 }
