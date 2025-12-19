@@ -10,6 +10,15 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 :pencil: - chore
 :microscope: - experimental
 
+## [2.4.0]
+- :rocket: added steps to work with custom properties (script results) in memory and validations
+```gherkin
+When I save '$js(element => element.prop("value"))' custom property of 'Element' as 'value'
+Then I expect '$js(element => element.prop("value"))' custom property of 'Element' to be equal '123'
+When I save '$js(element => element.prop("value"))' custom property of every element of 'Collection' collection as 'nodeNames'
+Then I expect '$js(element => element.prop("value"))' custom property of every element in 'Collection' collection to equal 'LI'
+```
+
 ## [2.3.1]
 - :x: removed alias assignment in page object
 
