@@ -28,6 +28,11 @@ Feature: validations
     Then I expect 'value' property of 'Simple Text Input' not to be equal '1234'
     Then I expect 'value' property of 'Simple Text Input' to contain '12'
 
+  Scenario: element property
+    Then I expect '$js(e => e.prop("value"))' custom property of 'Simple Text Input' to be equal '123'
+    Then I expect '$js(e => e.prop("value"))' custom property of 'Simple Text Input' not to be equal '1234'
+    Then I expect '$js(e => e.prop("value"))' custom property of 'Simple Text Input' to contain '12'
+
   Scenario: element attribute
     Then I expect 'name' attribute of 'Simple Text Input' to be equal 'textInputName'
     Then I expect 'name' attribute of 'Simple Text Input' not to be equal 'textInput'
@@ -53,6 +58,10 @@ Feature: validations
   Scenario: collection property of elements
     Then I expect 'nodeName' property of every element in 'Simple Text List Items' collection to equal 'LI'
     Then I expect 'nodeName' property of every element in 'Simple Text List Items' collection not to contain 'A'
+
+  Scenario: collection custom property of elements
+    Then I expect '$js(e => e.prop("nodeName"))' custom property of every element in 'Simple Text List Items' collection to equal 'LI'
+    Then I expect '$js(e => e.prop("nodeName"))' custom property of every element in 'Simple Text List Items' collection not to contain 'A'
 
   Scenario: element css property
     Then I expect 'background-color' css property of 'Simple Text Input' to be equal 'rgb(95, 158, 160)'
