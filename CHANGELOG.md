@@ -10,6 +10,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 :pencil: - chore
 :microscope: - experimental
 
+## [2.5.0]
+- :rocket: added http steps
+
 ## [2.4.0]
 - :rocket: added steps to work with custom properties (script results) in memory and validations
 ```gherkin

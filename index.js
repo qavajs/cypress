@@ -7,3 +7,4 @@ import './lib/valueValidation.js';
 import './lib/execute.js';
 import './lib/storage.js';
 import './lib/mouseActions.js';
+import './lib/http.js';
