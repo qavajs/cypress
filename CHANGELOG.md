@@ -10,6 +10,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 :pencil: - chore
 :microscope: - experimental
 
+## [2.6.0]
+- :rocket: added `I save value of...` step
+
 ## [2.5.0]
 - :rocket: added http steps
 
