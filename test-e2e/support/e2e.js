@@ -8,4 +8,3 @@ defineQavajs({
     pageObject: new App(),
     memory: new Memory()
 });
-
