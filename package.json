@@ -1,11 +1,12 @@
 {
   "name": "@qavajs/cypress",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "description": "qavajs for cypress runner",
   "main": "index.js",
   "scripts": {
     "debug": "cypress open --config-file test-e2e/cypress.config.js",
-    "test": "cypress run --config-file test-e2e/cypress.config.js"
+    "test": "cypress run --config-file test-e2e/cypress.config.js",
+    "test:it": "MODE=it cypress run --config-file test-e2e/cypress.config.js"
   },
   "keywords": [
     "QA",
@@ -27,8 +28,8 @@
   "author": "Alexandr Galichenko",
   "license": "MIT",
   "devDependencies": {
-    "@qavajs/cypress-runner-adapter": "^1.5.0",
+    "@qavajs/cypress-runner-adapter": "^1.6.0",
     "@qavajs/memory": "^1.10.3",
-    "cypress": "^15.8.1"
+    "cypress": "^15.10.0"
   }
 }

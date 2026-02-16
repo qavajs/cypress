@@ -5,6 +5,7 @@ export default class App {
     SimpleTextListItems = locator('#textValueList li');
     SimpleTextListItemByIndex = locator.template(idx => `#textValueList li:nth-child(${idx})`);
     SimpleTextListItemByText = locator.native(({ cy, argument }) => cy.get(`#textValueList li`).filter(`:contains("${argument}")`));
+    SimpleTextElementNative = locator.native(({ cy }) => cy.get('#textValue'))
     SimpleTextInput = locator('#textInput');
     FileInput = locator('#fileInput');
     Action = locator('#action');
@@ -49,4 +50,14 @@ export default class App {
     EventHandler = locator('#mouseEvent');
     KeyboardEventHandler = locator('#keyboardEvent');
     ScrollElement = locator('#scrollElement');
+
+    BodyComponent = locator('body').as(BodyComponent);
+    BodyComponentTemplate = locator.template(selector => selector).as(BodyComponent);
+    BodyComponentNative = locator.native(({ cy }) => cy.get('body')).as(BodyComponent);
+
+    TopLevelComponent = locator.as(BodyComponent);
+}
+
+class BodyComponent {
+    TextElement = locator('#textValue');
 }
