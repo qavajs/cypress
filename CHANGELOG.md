@@ -10,6 +10,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 :pencil: - chore
 :microscope: - experimental
 
+## [Unreleased]
+- :rocket: improved page object logging
+
 ## [2.7.0]
 - :rocket: added logic to display resolved selector chain
 
