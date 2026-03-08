@@ -29,7 +29,7 @@
   "author": "Alexandr Galichenko",
   "license": "MIT",
   "devDependencies": {
-    "@qavajs/cypress-runner-adapter": "^1.8.0",
+    "@qavajs/cypress-runner-adapter": "^1.9.0",
     "@qavajs/memory": "^1.10.3",
     "cypress": "^15.11.0"
   }
