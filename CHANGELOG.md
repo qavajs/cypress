@@ -10,6 +10,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 :pencil: - chore
 :microscope: - experimental
 
+## [2.8.1]
+- :beetle: fixed native selector logging to display `[function]` instead of function body
+
 ## [2.8.0]
 - :rocket: improved memory and page object logging
 
