@@ -1,4 +1,6 @@
 # @qavajs/cypress
+[![npm](https://img.shields.io/npm/v/@qavajs/cypress)](https://www.npmjs.com/package/@qavajs/cypress)
+[![license](https://img.shields.io/npm/l/@qavajs/cypress)](LICENSE)
 
 Gherkin/BDD step definitions for web testing with Cypress. Part of the [qavajs](https://github.com/qavajs) framework.
 
