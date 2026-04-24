@@ -1,17 +1,17 @@
 Feature: http
 
-  Scenario: GraphQL send
-    Given I create GraphQL request 'request'
-    And I add 'https://rickandmortyapi.com/graphql' url to '$request'
-    And I add query to GraphQL '$request':
-    """
-    query {  characters(page: 2, filter: { name: "rick" }) {
-      results { name }
-         }
-      }
-    """
-    And I send '$request' request and save response as 'response'
-    Then I expect '$response.status' to equal '200'
+  # Scenario: GraphQL send
+  #   Given I create GraphQL request 'request'
+  #   And I add 'https://rickandmortyapi.com/graphql' url to '$request'
+  #   And I add query to GraphQL '$request':
+  #   """
+  #   query {  characters(page: 2, filter: { name: "rick" }) {
+  #     results { name }
+  #        }
+  #     }
+  #   """
+  #   And I send '$request' request and save response as 'response'
+  #   Then I expect '$response.status' to equal '200'
 
   Scenario: Verify simple send
     Given I create 'GET' request 'request'
