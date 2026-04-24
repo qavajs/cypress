@@ -10,6 +10,13 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 :pencil: - chore
 :microscope: - experimental
 
+## [2.8.2]
+- :rocket: added `clickable` condition (checks element is visible and not disabled)
+- :beetle: fixed `validateAllOf` exiting after first successful match instead of validating all values
+- :beetle: fixed circular reference in `I expect {value} {validation} at least one of:` step
+- :beetle: fixed `execute` steps throwing generic JS error on invalid function string — now surfaces a descriptive message
+- :pencil: added `engines` field to `package.json` (`node >= 18`)
+
 ## [2.8.1]
 - :beetle: fixed native selector logging to display `[function]` instead of function body
 
