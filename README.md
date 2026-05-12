@@ -56,9 +56,9 @@ class Header {
 
 export default class App {
     // Simple CSS/XPath selector
-    SearchInput  = locator('#search');
+    SearchInput = locator('#search');
     SearchButton = locator('#searchBtn');
-    Results      = locator('.result-item');
+    Results = locator('.result-item');
 
     // Parameterized selector
     ResultByIndex = locator.template(idx => `.result-item:nth-child(${idx})`);
@@ -79,11 +79,11 @@ The memory class stores values accessible in steps via the `$key` syntax.
 
 ```typescript
 export default class Memory {
-    baseUrl      = 'https://example.com';
-    testUser     = 'user@example.com';
+    baseUrl = 'https://example.com';
+    testUser = 'user@example.com';
     // Functions are called on access
-    timestamp    = () => Date.now();
-    uppercase    = (str: string) => str.toUpperCase();
+    timestamp = () => Date.now();
+    uppercase = (str: string) => str.toUpperCase();
 }
 ```
 
