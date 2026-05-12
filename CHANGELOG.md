@@ -10,6 +10,11 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 :pencil: - chore
 :microscope: - experimental
 
+## [2.9.0]
+- :pencil: added TypeScript declaration files (`index.d.ts`, `po.d.ts`, `defineQavajs.d.ts`)
+- :pencil: added `tsconfig.json`
+- :pencil: added `types` and `exports` fields to `package.json`
+
 ## [2.8.2]
 - :rocket: added `clickable` condition (checks element is visible and not disabled)
 - :beetle: fixed `validateAllOf` exiting after first successful match instead of validating all values

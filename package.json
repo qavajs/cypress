@@ -1,8 +1,23 @@
 {
   "name": "@qavajs/cypress",
-  "version": "2.8.2",
+  "version": "2.9.0",
   "description": "qavajs for cypress runner",
   "main": "index.js",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    },
+    "./po": {
+      "types": "./po.d.ts",
+      "default": "./po.js"
+    },
+    "./defineQavajs": {
+      "types": "./defineQavajs.d.ts",
+      "default": "./defineQavajs.js"
+    }
+  },
   "scripts": {
     "debug": "cypress open --config-file test-e2e/cypress.config.js",
     "debug:it": "MODE=it cypress open --config-file test-e2e/cypress.config.js",
@@ -32,8 +47,8 @@
     "node": ">=18"
   },
   "devDependencies": {
-    "@qavajs/cypress-runner-adapter": "^1.9.2",
+    "@qavajs/cypress-runner-adapter": "^1.11.0",
     "@qavajs/memory": "^1.11.0",
-    "cypress": "^15.14.1"
+    "cypress": "^15.15.0"
   }
 }
