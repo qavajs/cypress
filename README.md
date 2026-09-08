@@ -17,7 +17,7 @@ npm install @qavajs/cypress @qavajs/cypress-runner-adapter @qavajs/memory
 import { defineConfig } from 'cypress';
 import cucumber from '@qavajs/cypress-runner-adapter/adapter';
 
-module.exports = defineConfig({
+export default defineConfig({
     e2e: {
         specPattern: 'cypress/features/**/*.feature',
         supportFile: 'cypress/support/e2e.js',
