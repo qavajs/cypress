@@ -10,6 +10,10 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 :pencil: - chore
 :microscope: - experimental
 
+## [3.0.0]
+- :rocket: bumped to Cypress `^16.0.0` and `@qavajs/cypress-runner-adapter` `^2.0.1`
+- :x: switched `cypress.config.js` to ESM `import` syntax (breaking for CommonJS `require`-based configs)
+
 ## [2.9.0]
 - :pencil: added TypeScript declaration files (`index.d.ts`, `po.d.ts`, `defineQavajs.d.ts`)
 - :pencil: added `tsconfig.json`

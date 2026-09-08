@@ -14,8 +14,8 @@ npm install @qavajs/cypress @qavajs/cypress-runner-adapter @qavajs/memory
 
 **cypress.config.js**
 ```javascript
-const { defineConfig } = require('cypress');
-const cucumber = require('@qavajs/cypress-runner-adapter/adapter');
+import { defineConfig } from 'cypress';
+import cucumber from '@qavajs/cypress-runner-adapter/adapter';
 
 module.exports = defineConfig({
     e2e: {
