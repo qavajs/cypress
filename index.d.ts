@@ -1,11 +1,71 @@
 /**
- * Side-effect import that registers all qavajs Cucumber step definitions
- * (actions, validations, memory, HTTP, mouse, storage, etc.) with the
- * `@qavajs/cypress-runner-adapter` runtime.
+ * Registers all qavajs Cucumber step definitions (actions, validations, memory, HTTP, mouse, storage, etc.)
+ * with the `@qavajs/cypress-runner-adapter` runtime and exports types for writing custom steps.
  *
  * Import this once in your Cypress support file:
  * ```ts
  * import '@qavajs/cypress';
  * ```
+ *
+ * @example custom step
+ * ```ts
+ * import { When } from '@qavajs/cypress-runner-adapter';
+ * import type { QavajsCypressWorld, MemoryValue } from '@qavajs/cypress';
+ *
+ * When('I type {value} slowly into {locator}', function (
+ *     this: QavajsCypressWorld,
+ *     text: MemoryValue,
+ *     locator: Cypress.Chainable<JQuery<HTMLElement>>
+ * ) {
+ *     locator.then($el => cy.wrap($el).type(text.value(), { delay: 200 }));
+ * });
+ * ```
  */
-export {};
+import { World, WorldOptions } from '@qavajs/cypress-runner-adapter';
+
+/** Memory instance used to resolve and store values. */
+export interface QavajsMemory {
+    /** Resolve memory expression, e.g. `'$key'` or `'$js(1 + 1)'`. */
+    getValue(expression: any): any;
+    /** Save value under provided key. */
+    setValue(key: string, value: any): void;
+    /** Register object whose properties become memory constants/functions. */
+    register(obj: Record<string, any>): void;
+}
+
+/** Value of `{value}` step parameter: an unresolved memory expression. */
+export declare class MemoryValue {
+    readonly world: QavajsCypressWorld;
+    /** Raw expression from the step text. */
+    readonly expression: string;
+    constructor(world: QavajsCypressWorld, expression: string);
+    /**
+     * Resolve the expression. Resolution is synchronous, so call it inside a Cypress command
+     * callback (e.g. `cy.then`) to get values saved by previous steps.
+     */
+    value<T = any>(): T;
+    /** Save value to memory using the expression as key. */
+    set(value: any): void;
+    toString(): string;
+}
+
+/** World (`this`) of qavajs steps. */
+export declare class QavajsCypressWorld extends World {
+    memory: QavajsMemory;
+    /** Page object passed to `defineQavajs`. */
+    pageObject: object | (new () => object);
+    cy: Cypress.cy & CyEventEmitter;
+    frame: Cypress.cy & CyEventEmitter;
+    constructor(options: WorldOptions);
+    /**
+     * Resolve page object path (e.g. `'Form > Submit Button'`) to element chain.
+     * @param path - page object path
+     */
+    element(path: string): Cypress.Chainable<JQuery<HTMLElement>>;
+    /** Resolve memory expression. */
+    value(expression: string): any;
+    /** Save value to memory. */
+    setValue(key: string, value: any): void;
+    /** Log message to Cypress command log. */
+    log(value: string): void;
+}

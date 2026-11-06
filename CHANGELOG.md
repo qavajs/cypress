@@ -10,6 +10,20 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 :pencil: - chore
 :microscope: - experimental
 
+## [3.1.0]
+- :beetle: memory values are resolved at command execution time, so values saved by previous steps are available in `it` mode
+- :beetle: removed unsupported `softly`, `match schema` and `... to` forms from `{validation}` parameter (they matched steps but threw at runtime)
+- :beetle: page object component without selector (`locator.as(Component)`) keeps the scope of its parent
+- :beetle: `every element` validations retry until timeout
+- :beetle: alert steps use Cypress dialog events: settings survive navigation, `I expect text of alert` catches dialogs opened before the step and is not blocked by `I will accept/dismiss alert`
+- :beetle: `I click '...' text in '...' collection` works with text containing special characters
+- :beetle: `case insensitive equal` handles non-string values, clearer errors for invalid coordinates, empty page object path segments and `at least N elements` validation
+- :beetle: storage steps accept only `local` and `session` storage types
+- :rocket: exported `QavajsCypressWorld` and `MemoryValue` classes and types for custom steps
+- :pencil: `defineQavajs` stores configuration in module scope instead of `window`; `memory` is optional
+- :pencil: added `files` whitelist, removed `engines`
+- :pencil: added unit tests and type check to CI
+
 ## [3.0.0]
 - :rocket: bumped to Cypress `^16.0.0` and `@qavajs/cypress-runner-adapter` `^2.0.1`
 - :x: switched `cypress.config.js` to ESM `import` syntax (breaking for CommonJS `require`-based configs)

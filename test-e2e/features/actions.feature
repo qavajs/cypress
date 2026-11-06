@@ -114,3 +114,13 @@ Feature: actions
   Scenario: expect text of alert
     When I click 'Alert Button'
     Then I expect text of alert to be equal 'Are you robot?'
+
+  Scenario: type value saved in previous step
+    When I save text of 'Button' as 'buttonText'
+    And I type '$buttonText' to 'Input'
+    Then I expect text of 'Action' to be equal 'Click Me!'
+
+  Scenario: type into re-rendered element
+    When I execute '(() => { const i = this.document.querySelector("#input"); i.disabled = true; setTimeout(() => { const n = i.cloneNode(); n.disabled = false; i.replaceWith(n); }, 500); })()' function
+    And I type 'abc' to 'Input'
+    Then I expect 'value' property of 'Input' to be equal 'abc'

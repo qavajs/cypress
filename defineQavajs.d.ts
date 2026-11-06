@@ -1,21 +1,21 @@
 /** Options passed to {@link defineQavajs} to wire up the qavajs runtime. */
 export interface QavajsOptions {
     /** Root page-object instance or class used to resolve element aliases. */
-    pageObject: object;
-    /** Memory instance used for expression interpolation and value storage. */
-    memory: object;
+    pageObject: object | (new () => object);
+    /** Object whose properties are registered as memory values and functions. */
+    memory?: Record<string, any>;
 }
 
 /**
- * Initialise the qavajs runtime by attaching the page-object and memory
- * instances to the Cypress `window` object so step definitions can access them.
- * Call this once in your Cypress support file before any tests run.
+ * Initialise the qavajs runtime with page object and memory.
+ * Call this once in your Cypress support file, in the same bundle that imports `@qavajs/cypress`.
  *
  * @param options - Page-object and memory configuration.
  *
  * @example
  * ```ts
  * import defineQavajs from '@qavajs/cypress/defineQavajs';
+ * import '@qavajs/cypress';
  * import App from './page_object';
  * import Memory from './memory';
  *

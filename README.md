@@ -42,6 +42,8 @@ defineQavajs({
 });
 ```
 
+`defineQavajs` must be called in the same bundle (the support file) that imports `@qavajs/cypress`. `memory` is optional; `pageObject` can be an instance or a class.
+
 ## Page Objects
 
 Page objects define element locators used in step definitions.
@@ -91,6 +93,25 @@ Use `$key` in any step parameter to reference a memory value, `$key()` to call a
 
 ---
 
+## Custom Steps
+
+`this` in steps is a `QavajsCypressWorld`. `{value}` parameters are `MemoryValue` objects: resolve them inside Cypress command callbacks, so values saved by previous steps are available in both `describe` and `it` modes.
+
+```typescript
+import { When } from '@qavajs/cypress-runner-adapter';
+import type { QavajsCypressWorld, MemoryValue } from '@qavajs/cypress';
+
+When('I type {value} slowly into {locator}', function (
+    this: QavajsCypressWorld,
+    text: MemoryValue,
+    locator: Cypress.Chainable<JQuery<HTMLElement>>
+) {
+    locator.then($el => cy.wrap($el).type(text.value(), { delay: 200 }));
+});
+```
+
+---
+
 ## Step Definitions
 
 ### Navigation & Actions
@@ -111,7 +132,7 @@ Use `$key` in any step parameter to reference a memory value, `$key()` to call a
 | `I clear '{locator}' and type '{value}'` | Clear then type |
 | `I press '{value}' key` | Press a keyboard key or combo (e.g. `Enter`, `Control+C`) |
 | `I press '{value}' key {int} times` | Press key N times |
-| `I hover over '{locator}'` | Hover over element |
+| `I hover over '{locator}'` | Hover over element (dispatches mouse events; CSS `:hover` is not triggered) |
 | `I select '{value}' option from '{locator}' dropdown` | Select by text |
 | `I select {int} option from '{locator}' dropdown` | Select by index |
 | `I click '{value}' text in '{locator}' collection` | Click item in collection by text |
@@ -124,9 +145,11 @@ Use `$key` in any step parameter to reference a memory value, `$key()` to call a
 
 | Step | Description |
 |------|-------------|
-| `I will accept alert` | Accept the next alert |
-| `I will dismiss alert` | Dismiss the next alert |
-| `I will type '{value}' to alert` | Type into the next prompt |
+| `I will accept alert` | Accept confirm dialogs for the rest of the scenario (default) |
+| `I will dismiss alert` | Dismiss confirm dialogs for the rest of the scenario |
+| `I will type '{value}' to alert` | Answer prompt dialogs with value for the rest of the scenario |
+
+Dialog settings survive navigation and are reset when the next scenario starts.
 
 ### Validations
 
@@ -143,7 +166,7 @@ Use `$key` in any step parameter to reference a memory value, `$key()` to call a
 | `I expect page title {validation} '{value}'` | Assert page title |
 | `I expect number of elements in '{locator}' collection {validation} '{value}'` | Assert collection count |
 | `I expect every element in '{locator}' collection {condition}` | Assert all elements in collection |
-| `I expect text of alert {validation} '{value}'` | Assert alert text |
+| `I expect text of alert {validation} '{value}'` | Assert text of the oldest not yet validated dialog of the scenario (waits for it to appear) |
 
 **Conditions:** `to be visible`, `not to be visible`, `to be hidden`, `to be present`, `not to be present`, `to be enabled`, `to be disabled`, `to be in viewport`, `to be clickable`
 
@@ -237,8 +260,15 @@ Feature: Search
 # Install dependencies
 npm install
 
-# Run tests
+# Run unit tests
+npm run test:unit
+
+# Type check declarations
+npm run typecheck
+
+# Run e2e tests (describe and it modes)
 npm run test
+npm run test:it
 
 # Open Cypress GUI
 npm run debug

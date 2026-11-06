@@ -8,3 +8,6 @@ import './lib/execute.js';
 import './lib/storage.js';
 import './lib/mouseActions.js';
 import './lib/http.js';
+
+export { QavajsCypressWorld } from './lib/setup.js';
+export { MemoryValue } from './lib/memoryValue.js';
