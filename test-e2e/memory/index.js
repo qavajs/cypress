@@ -21,7 +21,7 @@ export default class Memory {
     button2 = 'Button2';
     userInterceptionMatcher = {
         method: 'GET',
-        url: '**/users'
+        url: '**/users.json'
     };
     uploadFile = 'test-e2e/apps/actions.html';
     getComputedString = function () {

@@ -15,6 +15,14 @@ export default class App {
     ButtonHover = locator('#buttonHover');
     Input = locator('#input');
     Select = locator('#select');
+    Checkbox = locator('#checkbox');
+    RadioOne = locator('#radioOne');
+    RadioTwo = locator('#radioTwo');
+    Counter = locator('#counter');
+    HiddenText = locator('#hiddenText');
+    FetchUsers = locator('#fetchUsers');
+    SaveUser = locator('#saveUser');
+    Status = locator('#status');
     Buttons = locator('.button');
     IFrame = locator('iframe#firstIframe');
     InnerIFrame = locator('iframe#innerIframe');

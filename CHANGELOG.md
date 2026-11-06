@@ -11,6 +11,13 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 :microscope: - experimental
 
 ## [Unreleased]
+- :rocket: network interception and mock steps (`I create interception/mock for ... as ...`, `I wait for result of ... interception`, `I set ... mock to respond ...`, `I set ... mock to abort`, `I restore ... mock`), work in `describe` and `it` modes
+- :rocket: `I go back` / `I go forward`, `I check` / `I uncheck` (checkbox and radio), `I reload page`, `I clear ... and type ...` steps
+- :rocket: `to be hidden` condition (alias of `to be invisible`)
+- :rocket: unknown page object alias error suggests closest aliases and lists available ones
+- :rocket: `above`, `below`, `greater than`, `less than` convert numeric strings of actual value (e.g. element text) to numbers
+- :beetle: README step reference matches step definitions; unit test fails when they drift apart
+- :x: `I send ... request` no longer fails on non-2xx status, the response is saved for validation. Set `failOnStatusCode: true` on the request to restore previous behavior
 - :rocket: `log` option of `defineQavajs`: toggle memory/element/request entries, truncate long messages (`maxLength`), mask secrets (`mask`)
 - :rocket: memory log entries show raw (not stringified) value in DevTools console
 - :rocket: page object log entries show resolved chain items in DevTools console

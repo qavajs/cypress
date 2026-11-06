@@ -4,8 +4,13 @@ import * as chai from 'chai';
 
 globalThis.chai = chai;
 globalThis.expect = chai.expect;
+// step definition registry of the runner adapter is stored on window
+globalThis.window = globalThis;
+// root mocha hook used by interception module
+globalThis.beforeEach = () => {};
 globalThis.Cypress = {
     log() {},
+    on() {},
     config: key => ({ viewportWidth: 1000, viewportHeight: 600 })[key]
 };
 

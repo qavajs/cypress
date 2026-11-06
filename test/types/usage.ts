@@ -1,6 +1,6 @@
 // Compile-time checks of public typings (run with `npm run typecheck`)
 import { When } from '@qavajs/cypress-runner-adapter';
-import type { QavajsCypressWorld, MemoryValue } from '../../index';
+import type { QavajsCypressWorld, MemoryValue, Interception } from '../../index';
 import defineQavajs from '../../defineQavajs';
 import { locator } from '../../po';
 
@@ -29,4 +29,13 @@ When('I type {value} slowly into {locator}', function (
     element.then($el => cy.wrap($el).type(text.value<string>(), { delay: 200 }));
     this.element('List > Item (1)').click();
     this.setValue('key', this.value('$url'));
+});
+
+When('I expect {value} interception to be called', function (this: QavajsCypressWorld, interception: MemoryValue) {
+    cy.then(() => {
+        const { calls, result } = interception.value<Interception>();
+        expect(calls.length).to.be.above(0);
+        const status: number | undefined = result?.response?.statusCode;
+        return status;
+    });
 });

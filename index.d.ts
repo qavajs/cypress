@@ -49,6 +49,34 @@ export declare class MemoryValue {
     toString(): string;
 }
 
+/** A recorded call of an interception or mock. */
+export interface InterceptionCall {
+    request: { url: string; method: string; headers: Record<string, string | string[]>; body: any };
+    /** `undefined` until the response is received */
+    response?: { statusCode?: number; statusMessage?: string; headers?: Record<string, string | string[]>; body?: any; error?: string };
+    /** `true` when the call was returned by `I wait for result of ... interception` */
+    waited: boolean;
+}
+
+/** Interception or mock created by `I create interception/mock for ... as ...` and saved to memory. */
+export declare class Interception {
+    /** Memory key the interception is saved as. */
+    readonly name: string;
+    /** `cy.intercept` url glob, RegExp or RouteMatcher. */
+    readonly matcher: string | RegExp | object;
+    /** All recorded calls. */
+    calls: InterceptionCall[];
+    /** Last call returned by `I wait for result of ... interception`. */
+    result?: InterceptionCall;
+    /** Mocked response passed to `req.reply`. */
+    mock?: { statusCode: number; body?: any; headers?: Record<string, string> } | { forceNetworkError: true };
+    /** `false` after `I restore ... mock`. */
+    active: boolean;
+    constructor(name: string, matcher: string | RegExp | object);
+    /** Oldest completed call that was not waited yet. */
+    nextCall(): InterceptionCall | undefined;
+}
+
 /** World (`this`) of qavajs steps. */
 export declare class QavajsCypressWorld extends World {
     memory: QavajsMemory;

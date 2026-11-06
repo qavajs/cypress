@@ -124,3 +124,41 @@ Feature: actions
     When I execute '(() => { const i = this.document.querySelector("#input"); i.disabled = true; setTimeout(() => { const n = i.cloneNode(); n.disabled = false; i.replaceWith(n); }, 500); })()' function
     And I type 'abc' to 'Input'
     Then I expect 'value' property of 'Input' to be equal 'abc'
+
+  Scenario: reload page
+    When I type 'test value' to 'Input'
+    When I reload page
+    Then I expect text of 'Action' to be equal 'Nothing'
+
+  Scenario: clear and type
+    When I type 'old value' to 'Input'
+    When I clear 'Input' and type 'new value'
+    Then I expect 'value' property of 'Input' to be equal 'new value'
+
+  Scenario: go back and forward
+    When I open '$valuesPage' url
+    And I go back
+    Then I expect current url to contain 'actions.html'
+    When I go forward
+    Then I expect current url to contain 'values.html'
+
+  Scenario: check and uncheck checkbox
+    When I check 'Checkbox'
+    Then I expect 'checked' property of 'Checkbox' to be equal '$js(true)'
+    When I uncheck 'Checkbox'
+    Then I expect 'checked' property of 'Checkbox' to be equal '$js(false)'
+
+  Scenario: check radio button
+    When I check 'Radio Two'
+    Then I expect 'checked' property of 'Radio Two' to be equal '$js(true)'
+    And I expect 'checked' property of 'Radio One' to be equal '$js(false)'
+    When I check 'Radio One'
+    Then I expect 'checked' property of 'Radio Two' to be equal '$js(false)'
+
+  Scenario: numeric validation of element text
+    Then I expect text of 'Counter' to be above '41'
+    And I expect text of 'Counter' to be below '43'
+
+  Scenario: hidden condition
+    Then I expect 'Hidden Text' to be hidden
+    And I expect 'Button' not to be hidden

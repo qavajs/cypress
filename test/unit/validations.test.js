@@ -60,3 +60,18 @@ test('condition phrases map to chai chainers', () => {
     }
     assert.throws(() => getConditionExpect('to be shiny'), /wait is not implemented/);
 });
+
+test('numeric validations convert numeric strings of actual value', () => {
+    getValidation('to be above')('42', '10');
+    getValidation('to be below')(' 3.5 ', '4');
+    getValidation('to be greater than')('-1', '-2');
+    getValidation('not to be less than')('10', '9');
+    assert.throws(() => getValidation('to be above')('42px', '10'), /42px/);
+    assert.throws(() => getValidation('to be above')('5', '10'));
+});
+
+test('hidden condition is alias of invisible', () => {
+    assert.equal(getConditionExpect('to be hidden'), 'be.hidden');
+    assert.equal(getConditionExpect('not to be hidden'), 'not.be.hidden');
+    assert.ok(fullMatch(conditionWaitRegexp, 'to be hidden'));
+});
