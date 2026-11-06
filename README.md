@@ -44,6 +44,28 @@ defineQavajs({
 
 `defineQavajs` must be called in the same bundle (the support file) that imports `@qavajs/cypress`. `memory` is optional; `pageObject` can be an instance or a class.
 
+### Logging
+
+qavajs writes memory reads/writes (`$key →`, `$key ←`), resolved page object elements and HTTP requests to the Cypress command log.
+The full value is available in DevTools console after clicking the entry. Use the `log` option to tune it:
+
+```typescript
+defineQavajs({
+    pageObject: new PageObject(),
+    log: {
+        memory: true,           // memory reads and writes
+        elements: true,         // page object element resolution
+        requests: true,         // `I send ... request` step
+        maxLength: 200,         // truncate command log messages (0 - no truncation)
+        mask: ['password', /token/i, 'authorization'] // replace matching keys and properties with ***
+    }
+});
+```
+
+`log: false` disables all qavajs entries. `mask` patterns are matched against memory keys/expressions and object property names
+(e.g. request/response headers and body fields); string patterns match case-insensitive substrings.
+`this.log` in custom steps writes to the command log and attaches the message to the test report.
+
 ## Page Objects
 
 Page objects define element locators used in step definitions.

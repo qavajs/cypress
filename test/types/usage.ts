@@ -16,6 +16,10 @@ class App {
 
 defineQavajs({ pageObject: new App(), memory: { url: 'https://qavajs.github.io' } });
 defineQavajs({ pageObject: App });
+defineQavajs({ pageObject: App, log: false });
+defineQavajs({ pageObject: App, log: { memory: false, maxLength: 0, mask: ['password', /token/i] } });
+// @ts-expect-error mask must be an array
+defineQavajs({ pageObject: App, log: { mask: 'token' } });
 
 When('I type {value} slowly into {locator}', function (
     this: QavajsCypressWorld,

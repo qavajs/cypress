@@ -10,6 +10,13 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 :pencil: - chore
 :microscope: - experimental
 
+## [Unreleased]
+- :rocket: `log` option of `defineQavajs`: toggle memory/element/request entries, truncate long messages (`maxLength`), mask secrets (`mask`)
+- :rocket: memory log entries show raw (not stringified) value in DevTools console
+- :rocket: page object log entries show resolved chain items in DevTools console
+- :rocket: HTTP requests are logged with masked request/response details and GraphQL operation name
+- :beetle: `this.log` in custom steps is not reformatted as memory entry and is attached to the test report
+
 ## [3.1.0]
 - :beetle: memory values are resolved at command execution time, so values saved by previous steps are available in `it` mode
 - :beetle: removed unsupported `softly`, `match schema` and `... to` forms from `{validation}` parameter (they matched steps but threw at runtime)

@@ -66,6 +66,6 @@ export declare class QavajsCypressWorld extends World {
     value(expression: string): any;
     /** Save value to memory. */
     setValue(key: string, value: any): void;
-    /** Log message to Cypress command log. */
+    /** Log message to Cypress command log and attach it to the test report. */
     log(value: string): void;
 }
