@@ -60,3 +60,10 @@ Feature: memory
   Scenario: bounding rect
     When I save bounding rect of 'Simple Text Element' as 'boundingRect'
     Then I expect '$boundingRect.height' to be equal '$js(20)'
+
+  Scenario: value saved in previous step is used by element steps
+    When I save text of 'Simple Text Element' as 'savedText'
+    Then I expect text of 'Simple Text Element' to be equal '$savedText'
+    When I save 'id' attribute of 'Simple Text Element' as 'savedAttribute'
+    And I save '$savedAttribute' to memory as 'savedAttributeCopy'
+    Then I expect 'id' attribute of 'Simple Text Element' to be equal '$savedAttributeCopy'

@@ -1,1 +1,1 @@
-export { locator } from './lib/pageObjects';
+export { locator } from './lib/pageObjects.js';

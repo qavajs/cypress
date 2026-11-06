@@ -1,9 +1,18 @@
 {
   "name": "@qavajs/cypress",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "qavajs for cypress runner",
   "main": "index.js",
   "types": "index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "po.js",
+    "po.d.ts",
+    "defineQavajs.js",
+    "defineQavajs.d.ts",
+    "lib/"
+  ],
   "exports": {
     ".": {
       "types": "./index.d.ts",
@@ -22,7 +31,9 @@
     "debug": "cypress open --config-file test-e2e/cypress.config.js",
     "debug:it": "MODE=it cypress open --config-file test-e2e/cypress.config.js",
     "test": "cypress run --config-file test-e2e/cypress.config.js --browser chrome",
-    "test:it": "MODE=it cypress run --config-file test-e2e/cypress.config.js --browser chrome"
+    "test:it": "MODE=it cypress run --config-file test-e2e/cypress.config.js --browser chrome",
+    "test:unit": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test \"test/unit/*.test.js\"",
+    "typecheck": "tsc -p tsconfig.json"
   },
   "keywords": [
     "QA",
@@ -43,12 +54,11 @@
   "homepage": "https://github.com/qavajs/cypress#readme",
   "author": "Alexandr Galichenko",
   "license": "MIT",
-  "engines": {
-    "node": ">=18"
-  },
   "devDependencies": {
-    "@qavajs/cypress-runner-adapter": "^2.0.1",
+    "@qavajs/cypress-runner-adapter": "^2.1.0",
     "@qavajs/memory": "^1.11.0",
-    "cypress": "^16.0.0"
+    "chai": "^5.2.1",
+    "cypress": "^16.2.1",
+    "typescript": "^5.9.3"
   }
 }

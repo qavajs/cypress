@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mock</title>
+</head>
+<body>
+<button id="fetchUsers">Fetch users</button>
+<button id="saveUser">Save user</button>
+<span id="status">idle</span>
+<ul id="users"></ul>
+<script>
+  const users = document.querySelector('#users');
+  const status = document.querySelector('#status');
+
+  async function fetchUsers() {
+    users.innerHTML = '';
+    try {
+      const response = await fetch('users.json', { cache: 'no-store' });
+      status.innerText = String(response.status);
+      const text = await response.text();
+      const list = text ? JSON.parse(text) : [];
+      for (const user of list) {
+        const li = document.createElement('li');
+        li.innerText = user.name;
+        users.appendChild(li);
+      }
+    } catch (e) {
+      status.innerText = 'network error';
+    }
+  }
+
+  async function saveUser() {
+    try {
+      const response = await fetch('api/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: 'John' })
+      });
+      status.innerText = 'saved ' + response.status;
+    } catch (e) {
+      status.innerText = 'network error';
+    }
+  }
+
+  document.querySelector('#saveUser').addEventListener('click', saveUser);
+  document.querySelector('#fetchUsers').addEventListener('click', fetchUsers);
+</script>
+</body>
+</html>

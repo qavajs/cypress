@@ -10,6 +10,34 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 :pencil: - chore
 :microscope: - experimental
 
+## [Unreleased]
+- :rocket: network interception and mock steps (`I create interception/mock for ... as ...`, `I wait for result of ... interception`, `I set ... mock to respond ...`, `I set ... mock to abort`, `I restore ... mock`), work in `describe` and `it` modes
+- :rocket: `I go back` / `I go forward`, `I check` / `I uncheck` (checkbox and radio), `I reload page`, `I clear ... and type ...` steps
+- :rocket: `to be hidden` condition (alias of `to be invisible`)
+- :rocket: unknown page object alias error suggests closest aliases and lists available ones
+- :rocket: `above`, `below`, `greater than`, `less than` convert numeric strings of actual value (e.g. element text) to numbers
+- :beetle: README step reference matches step definitions; unit test fails when they drift apart
+- :x: `I send ... request` no longer fails on non-2xx status, the response is saved for validation. Set `failOnStatusCode: true` on the request to restore previous behavior
+- :rocket: `log` option of `defineQavajs`: toggle memory/element/request entries, truncate long messages (`maxLength`), mask secrets (`mask`)
+- :rocket: memory log entries show raw (not stringified) value in DevTools console
+- :rocket: page object log entries show resolved chain items in DevTools console
+- :rocket: HTTP requests are logged with masked request/response details and GraphQL operation name
+- :beetle: `this.log` in custom steps is not reformatted as memory entry and is attached to the test report
+
+## [3.1.0]
+- :beetle: memory values are resolved at command execution time, so values saved by previous steps are available in `it` mode
+- :beetle: removed unsupported `softly`, `match schema` and `... to` forms from `{validation}` parameter (they matched steps but threw at runtime)
+- :beetle: page object component without selector (`locator.as(Component)`) keeps the scope of its parent
+- :beetle: `every element` validations retry until timeout
+- :beetle: alert steps use Cypress dialog events: settings survive navigation, `I expect text of alert` catches dialogs opened before the step and is not blocked by `I will accept/dismiss alert`
+- :beetle: `I click '...' text in '...' collection` works with text containing special characters
+- :beetle: `case insensitive equal` handles non-string values, clearer errors for invalid coordinates, empty page object path segments and `at least N elements` validation
+- :beetle: storage steps accept only `local` and `session` storage types
+- :rocket: exported `QavajsCypressWorld` and `MemoryValue` classes and types for custom steps
+- :pencil: `defineQavajs` stores configuration in module scope instead of `window`; `memory` is optional
+- :pencil: added `files` whitelist, removed `engines`
+- :pencil: added unit tests and type check to CI
+
 ## [3.0.0]
 - :rocket: bumped to Cypress `^16.0.0` and `@qavajs/cypress-runner-adapter` `^2.0.1`
 - :x: switched `cypress.config.js` to ESM `import` syntax (breaking for CommonJS `require`-based configs)

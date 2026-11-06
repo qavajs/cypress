@@ -39,3 +39,9 @@ Feature: http
     And I send '$request' request and save response as 'response'
     Then I expect '$response.status' to equal '201'
     Then I expect '$response.statusText' to equal 'Created'
+
+  Scenario: Non-2xx response is saved without failing the step
+    Given I create 'GET' request 'request'
+    And I add 'https://jsonplaceholder.typicode.com/todos/0' url to '$request'
+    And I send '$request' request and save response as 'response'
+    Then I expect '$response.status' to equal '404'

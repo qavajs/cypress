@@ -5,8 +5,9 @@
     "moduleResolution": "bundler",
     "declaration": true,
     "strict": true,
+    "skipLibCheck": false,
     "types": ["cypress"],
     "noEmit": true
   },
-  "include": ["*.d.ts"]
+  "include": ["*.d.ts", "test/types/*.ts"]
 }
