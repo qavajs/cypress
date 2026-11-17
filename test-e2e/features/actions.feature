@@ -42,6 +42,10 @@ Feature: actions
       | Button2  |
       | $button2 |
 
+  Scenario: click first element in collection matching text
+    When I click 'Button' text in 'Buttons' collection
+    Then I expect text of 'Action' to be equal 'Button1'
+
   Scenario: refresh page
     When I type 'test value' to 'Input'
     Then I expect text of 'Action' to be equal 'test value'
@@ -51,6 +55,14 @@ Feature: actions
   Scenario: press key
     When I press 'w' key
     Then I expect text of 'Action' to be equal 'keypress'
+
+  Scenario: press key from memory
+    When I press '$keyW' key
+    Then I expect text of 'Action' to be equal 'keypress'
+
+  Scenario: press key from memory multiple times
+    When I press '$enterKey' key 2 times
+    Then I expect text of 'Press Counter' to be equal 'pressed Enter 2 times'
 
   Scenario: press key with modifier
     And I press '{alt}a' key
@@ -73,9 +85,14 @@ Feature: actions
     When I select 'two' option from 'Select' dropdown
     Then I expect text of 'Action' to be equal 'select two'
 
-  Scenario: select input by index
-    When I select 2 option from 'Select' dropdown
+  Scenario Outline: select input by index (<option>)
+    When I select <option> option from 'Select' dropdown
     Then I expect text of 'Action' to be equal 'select two'
+
+    Examples:
+      | option |
+      | 2      |
+      | 2nd    |
 
   Scenario: scroll in window
     When I scroll by '0, 100'

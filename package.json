@@ -33,7 +33,9 @@
     "test": "cypress run --config-file test-e2e/cypress.config.js --browser chrome",
     "test:it": "MODE=it cypress run --config-file test-e2e/cypress.config.js --browser chrome",
     "test:unit": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test \"test/unit/*.test.js\"",
-    "typecheck": "tsc -p tsconfig.json"
+    "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.lib.json",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix"
   },
   "keywords": [
     "QA",
@@ -57,8 +59,10 @@
   "devDependencies": {
     "@qavajs/cypress-runner-adapter": "^2.1.0",
     "@qavajs/memory": "^1.11.0",
+    "@stylistic/eslint-plugin": "^6.0.1",
     "chai": "^5.2.1",
-    "cypress": "^16.2.1",
-    "typescript": "^5.9.3"
+    "cypress": "^16.3.0",
+    "oxlint": "^1.94.0",
+    "typescript": "^7.0.2"
   }
 }

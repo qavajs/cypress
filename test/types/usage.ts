@@ -16,6 +16,8 @@ class App {
 
 defineQavajs({ pageObject: new App(), memory: { url: 'https://qavajs.github.io' } });
 defineQavajs({ pageObject: App });
+class MemoryClass { url = 'https://qavajs.github.io'; }
+defineQavajs({ pageObject: App, memory: MemoryClass });
 defineQavajs({ pageObject: App, log: false });
 defineQavajs({ pageObject: App, log: { memory: false, maxLength: 0, mask: ['password', /token/i] } });
 // @ts-expect-error mask must be an array

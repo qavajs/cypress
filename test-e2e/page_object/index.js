@@ -4,8 +4,8 @@ export default class App {
     SimpleTextElement = locator('#textValue');
     SimpleTextListItems = locator('#textValueList li');
     SimpleTextListItemByIndex = locator.template(idx => `#textValueList li:nth-child(${idx})`);
-    SimpleTextListItemByText = locator.native(({ cy, argument }) => cy.get(`#textValueList li`).filter(`:contains("${argument}")`));
-    SimpleTextElementNative = locator.native(({ cy }) => cy.get('#textValue'))
+    SimpleTextListItemByText = locator.native(({ cy, argument }) => cy.get('#textValueList li').filter(`:contains("${argument}")`));
+    SimpleTextElementNative = locator.native(({ cy }) => cy.get('#textValue'));
     SimpleTextInput = locator('#textInput');
     FileInput = locator('#fileInput');
     Action = locator('#action');

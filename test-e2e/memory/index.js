@@ -8,17 +8,19 @@ export default class Memory {
     dragDropPage = './test-e2e/apps/dragdrop.html';
     scrollPage = './test-e2e/apps/scroll.html';
     array = (...args) => args;
-    setInputValue = function() { return this.document.querySelector('#input').value = 'some value' };
-    getActionInnerText = function() { return this.document.querySelector("#action").innerText };
+    setInputValue = function() { return this.document.querySelector('#input').value = 'some value'; };
+    getActionInnerText = function() { return this.document.querySelector('#action').innerText; };
     clickJS = target => target.click();
     getInnerText = target => target.innerText;
     userFromMemory = 'Mock 3';
     users = JSON.stringify([
-        {"name": "Memory Mock 1"},
-        {"name": "Memory Mock 2"},
-        {"name": "Memory Mock 3"}
+        { 'name': 'Memory Mock 1' },
+        { 'name': 'Memory Mock 2' },
+        { 'name': 'Memory Mock 3' }
     ]);
     button2 = 'Button2';
+    keyW = 'w';
+    enterKey = '{enter}';
     userInterceptionMatcher = {
         method: 'GET',
         url: '**/users.json'
@@ -27,7 +29,7 @@ export default class Memory {
     getComputedString = function () {
         return 'I was computed';
     };
-    multilineMemoryValue = `Carriage\nreturn`;
+    multilineMemoryValue = 'Carriage\nreturn';
     arr = [1, 2, 3, 4, 5];
     reverseArr = [5, 4, 3, 2, 1];
     ascending = (a, b) => a - b;

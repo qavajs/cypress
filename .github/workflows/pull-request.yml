@@ -14,6 +14,8 @@ jobs:
         with:
           node-version: 24
       - run: npm ci
+      - name: lint
+        run: npm run lint
       - name: unit tests
         run: npm run test:unit
       - name: type check
