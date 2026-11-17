@@ -5,17 +5,20 @@ Feature: mouse actions
     And I hover over 'Event Handler'
 
   Scenario Outline: mouse press and release
-    Then I press <button> mouse button on '20, 500'
+    Then I press <name> mouse button on '20, 500'
     And I expect text of 'Event Handler' to contain '"buttons":<buttonCode>'
     And I expect text of 'Event Handler' to contain '"type":"mousedown"'
-    Then I release <button> mouse button on '20, 500'
+    And I expect text of 'Event Handler' to contain '"button":<button>'
+    Then I release <name> mouse button on '20, 500'
     And I expect text of 'Event Handler' to contain '"type":"mouseup"'
+    And I expect text of 'Event Handler' to contain '"button":<button>'
+    And I expect text of 'Event Handler' to contain '"buttons":0'
 
     Examples:
-      | button | buttonCode |
-      | left   | 1          |
-      | right  | 2          |
-      | middle | 4          |
+      | name   | button | buttonCode |
+      | left   | 0      | 1          |
+      | right  | 2      | 2          |
+      | middle | 1      | 4          |
 
   Scenario: mouse move
     Then I move mouse to '10, 10'

@@ -42,7 +42,7 @@ defineQavajs({
 });
 ```
 
-`defineQavajs` must be called in the same bundle (the support file) that imports `@qavajs/cypress`. `memory` is optional; `pageObject` can be an instance or a class.
+`defineQavajs` must be called in the same bundle (the support file) that imports `@qavajs/cypress`. `memory` is optional; `pageObject` and `memory` can be an instance or a class.
 
 ### Logging
 
@@ -121,6 +121,18 @@ export default class Memory {
 ```
 
 Use `$key` in any step parameter to reference a memory value, `$key()` to call a function, and `$key.property` for nested access.
+Use `{$key}` to interpolate a value into a string, e.g. `'{$baseUrl}/users'`.
+
+Every scenario (and every example row of a Scenario Outline) gets its own memory: values saved by one scenario are not available in the next one.
+`memory` can be a class or an instance. A class is instantiated for every scenario; an instance is shallow copied,
+so nested objects and arrays are shared between scenarios. Pass the class to get a fully fresh memory for every scenario:
+
+```typescript
+defineQavajs({
+    pageObject: new PageObject(),
+    memory: Memory
+});
+```
 
 ---
 
@@ -169,12 +181,12 @@ Steps marked with `:` take a docstring (`"""`) or a data table on the next lines
 | `I clear '{locator}' and type '{value}'` | Clear an input, then type text |
 | `I check '{locator}'` | Check a checkbox or select a radio button |
 | `I uncheck '{locator}'` | Uncheck a checkbox |
-| `I press '{key}' key` | Press a key or combo (Cypress `type` syntax, e.g. `{enter}`, `{ctrl}c`) |
+| `I press '{key}' key` | Press a key or combo (Cypress `type` syntax, e.g. `{enter}`, `{ctrl}c`); accepts memory expressions |
 | `I press '{key}' key {int} times` | Press key N times |
 | `I hover over '{locator}'` | Hover over element (dispatches mouse events; CSS `:hover` is not triggered) |
 | `I select '{value}' option from '{locator}' dropdown` | Select option by text or value |
 | `I select {int} option from '{locator}' dropdown` | Select option by 1-based index; ordinal suffix is optional (`I select 2nd option from 'Country' dropdown`) |
-| `I click '{value}' text in '{locator}' collection` | Click the element of collection whose text contains value |
+| `I click '{value}' text in '{locator}' collection` | Click the first element of collection whose text contains value |
 | `I upload '{value}' file to '{locator}'` | Upload a file (path relative to project root) |
 | `I scroll to '{locator}'` | Scroll element into view |
 | `I scroll by '{value}'` | Scroll page by `x, y` offset |
@@ -195,7 +207,7 @@ Dialog settings survive navigation and are reset when the next scenario starts.
 | Step | Description |
 |------|-------------|
 | `I expect '{locator}' {condition}` | Assert element condition (see Conditions) |
-| `I expect every element in '{locator}' collection {condition}` | Assert condition of all elements in collection |
+| `I expect every element in '{locator}' collection {condition}` | Assert condition of all elements in collection, retries until timeout (`not to be present` passes for an empty collection) |
 | `I expect text of '{locator}' {validation} '{value}'` | Assert element text |
 | `I expect value of '{locator}' {validation} '{value}'` | Assert input value |
 | `I expect '{attr}' attribute of '{locator}' {validation} '{value}'` | Assert attribute |
@@ -303,9 +315,9 @@ They can be written as `to equal`, `equals`, `to be equal`, `does not contain`, 
 | `I add '{url}' url to '{request}'` | Set request URL |
 | `I add headers to '{request}':` + table | Add headers from a two-column table |
 | `I add '{value}' headers to '{request}'` | Add headers object from memory |
-| `I add body to '{request}':` + docstring | Set request body |
+| `I add body to '{request}':` + docstring | Set request body (add `Content-Type: application/json` header to send JSON string) |
 | `I add '{value}' body to '{request}'` | Set request body from memory |
-| `I add form data body to '{request}':` + table | Set multipart form data (`key`, `value`, `filename`, `contentType` columns) |
+| `I add form data body to '{request}':` + table | Set multipart form data (`key`, `value`, `filename`, `contentType` columns). Rows with `filename` or `contentType` are sent as files with UTF-8 text content, other rows as plain fields |
 | `I add query to GraphQL '{request}':` + docstring | Set GraphQL query |
 | `I add variables to GraphQL '{request}':` + docstring | Set GraphQL variables (JSON) |
 | `I send '{request}' request and save response as '{key}'` | Send request and save response |
@@ -377,6 +389,9 @@ Feature: Search
 ```bash
 # Install dependencies
 npm install
+
+# Lint (npm run lint:fix to fix style issues)
+npm run lint
 
 # Run unit tests
 npm run test:unit

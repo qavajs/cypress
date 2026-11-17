@@ -19,8 +19,11 @@ export interface QavajsLogOptions {
 export interface QavajsOptions {
     /** Root page-object instance or class used to resolve element aliases. */
     pageObject: object | (new () => object);
-    /** Object whose properties are registered as memory values and functions. */
-    memory?: Record<string, any>;
+    /**
+     * Memory values and functions: class (instantiated for every scenario) or instance (shallow copied for every scenario).
+     * Values saved by a scenario are not available in the next one.
+     */
+    memory?: Record<string, any> | (new () => Record<string, any>);
     /** Command log options. `false` disables all qavajs log entries. */
     log?: false | QavajsLogOptions;
 }

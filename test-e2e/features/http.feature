@@ -27,6 +27,8 @@ Feature: http
   Scenario: Verify POST with valid request body as Cucumber Doc String
     Given I create 'POST' request 'request'
     And I add 'https://jsonplaceholder.typicode.com/posts' url to '$request'
+    And I add headers to '$request':
+      | Content-Type | application/json |
     And I add body to '$request':
     """
       {
@@ -39,9 +41,19 @@ Feature: http
     And I send '$request' request and save response as 'response'
     Then I expect '$response.status' to equal '201'
     Then I expect '$response.statusText' to equal 'Created'
+    Then I expect '$response.body.title' to equal 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit'
+    Then I expect '$response.body.userId' to equal '$js(1)'
 
   Scenario: Non-2xx response is saved without failing the step
     Given I create 'GET' request 'request'
     And I add 'https://jsonplaceholder.typicode.com/todos/0' url to '$request'
     And I send '$request' request and save response as 'response'
     Then I expect '$response.status' to equal '404'
+
+  Scenario: Verify POST with request body from memory
+    Given I create 'POST' request 'request'
+    And I add 'https://jsonplaceholder.typicode.com/posts' url to '$request'
+    And I add '$js({ title: "qavajs" })' body to '$request'
+    And I send '$request' request and save response as 'response'
+    Then I expect '$response.status' to equal '201'
+    Then I expect '$response.body.title' to equal 'qavajs'

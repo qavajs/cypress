@@ -23,6 +23,21 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - :rocket: page object log entries show resolved chain items in DevTools console
 - :rocket: HTTP requests are logged with masked request/response details and GraphQL operation name
 - :beetle: `this.log` in custom steps is not reformatted as memory entry and is attached to the test report
+- :beetle: `I add body to ...` / `I add ... body to ...` send the body: it was saved as `request.data`, which `cy.request` ignores
+- :beetle: `I add form data body to ...` sends multipart body (FormData is encoded with boundary), rows without `filename`/`contentType` are plain fields instead of files
+- :beetle: GraphQL request: `query` and `variables` can be read back, `variables` accepts an object
+- :beetle: `I release ... mouse button` sends correct `MouseEvent.button` (left `0`, middle `1`, right `2`), `I press ... mouse button` sets `button` too
+- :beetle: `in viewport` condition uses size of element window, so `cy.viewport` and frames are respected
+- :beetle: `I expect every element in ... collection {condition}` retries until timeout and supports `not to be present`
+- :beetle: `I expect every element in ... array` fails with clear error for non-array value
+- :beetle: `I click ... text in ... collection` clicks the first matching element instead of failing on multiple matches
+- :beetle: `I hover over` dispatches events in one chain
+- :beetle: memory is isolated per scenario (and per Scenario Outline example row): values saved by a scenario are no longer available in the following scenarios, overridden memory values are restored. `memory` option accepts a class
+- :beetle: `I select 2nd option from ... dropdown`: ordinal suffix is matched (`(st|nd|rd|th)` was optional literal text in Cucumber expression)
+- :rocket: `I press ... key` and `I press ... key ... times` accept memory expressions
+- :pencil: `lib/` is type checked with `checkJs`, unit test verifies that JSDoc examples match step definitions
+- :pencil: oxlint (with `@stylistic` JS plugin), `npm run lint` in CI; tests run before publish
+- :pencil: step JSDoc: parameter types and names match step definitions, examples match step patterns
 
 ## [3.1.0]
 - :beetle: memory values are resolved at command execution time, so values saved by previous steps are available in `it` mode

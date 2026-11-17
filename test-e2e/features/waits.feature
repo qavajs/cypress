@@ -71,5 +71,8 @@ Feature: waits
     Then I expect every element in '<collection>' collection <condition>
 
     Examples:
-      | collection         | condition     |
-      | Present Collection | to be present |
+      | collection         | condition         |
+      | Present Collection | to be present     |
+      | Detach Element     | not to be present |
+      | Visible Element    | to be visible     |
+      | Hidden Element     | to be hidden      |
